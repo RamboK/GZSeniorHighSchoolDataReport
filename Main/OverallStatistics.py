@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from Main.init_config.property import *
+from init_config.property import *
 
 def overall_province(subject):
     dfitem = pd.read_csv(dirToString(subject, "item"))

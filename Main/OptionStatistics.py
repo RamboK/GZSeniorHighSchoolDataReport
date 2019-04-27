@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from Main.init_config.property import *
+from init_config.property import *
 
 #按题号为索引求各列再合并
 def optionStatistics(subject):

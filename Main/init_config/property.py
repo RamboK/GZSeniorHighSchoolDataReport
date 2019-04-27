@@ -1,6 +1,6 @@
 
-DATA_DIR = '/Users/Rambo/Downloads/highschool_data/'
-DATA_OUTPUT_DIR = "/Users/Rambo/Documents/GZ_output/"
+DATA_DIR = '/rundata/PythonLinuxCourse/data/highschool_data/'
+DATA_OUTPUT_DIR = "/rundata/PythonLinuxCourse/data/output/"
 
 SUBJECT = ['yuwen','shuxue','yingyu','tongyongjishu','wuli','huaxue','shengwu','zhengzhi','lishi','dili']
 

@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from Main.init_config.property import *
+from init_config.property import *
 def scoreRangeStatistics(subject):
     #open score file
     dfscore = pd.read_csv(dirToString(subject, "score"), delimiter='\t')

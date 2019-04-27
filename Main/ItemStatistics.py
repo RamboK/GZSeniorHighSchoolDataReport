@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-from Main.init_config.property import *
+from init_config.property import *
 
 
 #先求每列的值 再按index求交集
