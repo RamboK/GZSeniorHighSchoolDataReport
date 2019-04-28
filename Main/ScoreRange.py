@@ -1,6 +1,9 @@
 import pandas as pd
 import numpy as np
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 from Main.init_config.property import *
+
 def scoreRangeStatistics(subject):
     #open score file
     dfscore = pd.read_csv(dirToString(subject, "score"), delimiter='\t')
@@ -32,3 +35,37 @@ def scoreRangeStatistics(subject):
     series_city_name = pd.Series(CITY_MAP, name="区域名称")
     df = pd.concat([series_city_name, df_scoreRange, df_scoreRangeRate], axis=1)
     df.to_csv(DATA_OUTPUT_DIR+SUBJECT_MAP[subject]+"各市州各分数段统计.csv")
+
+
+    # 出各市州的分数段条形图
+    # 设置汉字字体，以及-正常显示
+    mpl.rcParams['font.sans-serif'] = ['FangSong']
+    mpl.rcParams['font.serif'] = ['FandSong']
+    mpl.rcParams['axes.unicode_minus'] = False
+
+
+    for i in range(len(df_scoreRange)):
+        # 设置图片大小
+        fig = plt.figure(num=i, figsize=(10,8))
+        # x轴的ticks
+        xlabels = df_scoreRange.iloc[i].index.tolist()
+        # 定义每个bar的位置
+        left = np.arange(len(xlabels))
+        # bar的高度
+        height = df_scoreRange.iloc[i].values.tolist()
+        # 画条形图
+        plt.bar(left, height, align="center", color='#B5B5B5', linewidth=1, edgecolor="K", alpha=0.8)
+        # 设置x轴的ticks
+        plt.xticks(left, xlabels, size="small", rotation=35)
+        ax = plt.gca()
+        # 标题
+        name_area = CITY_MAP[df_scoreRange.iloc[i].name]
+        title_name = "["+SUBJECT_MAP[subject]+"]"+name_area
+        ax.set_title(title_name)
+        ax.spines["right"].set_color('none')
+        ax.spines["top"].set_color('none')
+        # plt.rcParams['savefig.dpi'] = 200
+        # plt.rcParams['figure.dpi'] = 200
+        plt.savefig(DATA_OUTPUT_DIR + SUBJECT_MAP[subject] + "总分分数段分布图(" + str(name_area) + ")", dpi=400)
+        plt.close(i)
+
