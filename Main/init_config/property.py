@@ -14,11 +14,15 @@ SUBJECT_MAP = {"dili":"地理","yuwen":"语文","huaxue":"化学","lishi":"历�
 
 CITY_MAP = {1:"贵阳",2:"遵义",3:"安顺",4:"毕节",5:"铜仁",6:"六盘水",7:"黔南州",8:"黔东南",9:"黔西南"}
 
+SCHOOL_TYPE_MAP = {'class_1':"一类示范性高中", 'class_2':"二类示范性高中", 'class_3':"三类示范性高中", 'class_4':"非示范性高中"}
+
 def dirToString(subject,type):
     typeToDir={
         "item":DATA_DIR+subject+'ItemInfor.csv',
         "score":DATA_DIR+subject+'Score.txt',
         "rank":DATA_DIR+"等级数据.txt",
-        "option":DATA_DIR+subject+"Options.txt"
+        "option":DATA_DIR+subject+"Options.txt",
+        "dist":DATA_DIR+"区县信息.csv",
+        "school":DATA_DIR+"学校信息.csv"
     }
     return typeToDir.get(type)
